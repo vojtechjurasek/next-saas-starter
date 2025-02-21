@@ -1,8 +1,8 @@
 import '@/styles/globals.css'
 
-import { PropsWithChildren } from 'react'
-import { LanguageProvider } from '@inlang/paraglide-next'
+import { cache, PropsWithChildren } from 'react'
 import type { Metadata } from 'next'
+import { headers } from 'next/headers'
 
 import { Footer } from '@/components/footer'
 import { Navbar } from '@/components/navbar/navbar'
@@ -12,7 +12,17 @@ import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/lib/constant'
 import { fonts } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
-import { getLocale } from '@/paraglide/runtime.js'
+import {
+  assertIsLocale,
+  baseLocale,
+  getLocale,
+  Locale,
+  overwriteGetLocale,
+} from '@/paraglide/runtime'
+
+const ssrLocale = cache(() => ({ locale: baseLocale }))
+
+overwriteGetLocale(() => assertIsLocale(ssrLocale().locale))
 
 export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteConfig.url()),
@@ -48,21 +58,23 @@ export const generateMetadata = (): Metadata => ({
   },
 })
 
-const RootLayout = ({ children }: PropsWithChildren) => {
+const RootLayout = async ({ children }: PropsWithChildren) => {
+  // @ts-expect-error - headers must be sync
+  // https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658
+  ssrLocale().locale = headers().get('x-paraglide-locale') as Locale
+
   return (
-    <LanguageProvider>
-      <html lang={getLocale()} suppressHydrationWarning>
-        <body className={cn('min-h-screen font-sans', fonts)}>
-          <ThemeProvider attribute="class">
-            <Navbar />
-            {children}
-            <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
-            <Footer />
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
-    </LanguageProvider>
+    <html lang={getLocale()} suppressHydrationWarning>
+      <body className={cn('min-h-screen font-sans', fonts)}>
+        <ThemeProvider attribute="class">
+          <Navbar />
+          {children}
+          <ThemeSwitcher className="absolute bottom-5 right-5 z-10" />
+          <Footer />
+          <Toaster />
+        </ThemeProvider>
+      </body>
+    </html>
   )
 }
 
