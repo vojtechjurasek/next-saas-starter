@@ -1,23 +1,23 @@
-import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
+import { NextRequest, NextResponse } from 'next/server'
+import Stripe from 'stripe'
 
-import { env } from '@/env.mjs';
-import prisma from '@/lib/prisma';
-import { stripeServer } from '@/lib/stripe';
+import { env } from '@/env.mjs'
+import prisma from '@/lib/prisma'
+import { stripeServer } from '@/lib/stripe'
 
 const webhookHandler = async (req: NextRequest) => {
   try {
-    const buf = await req.text();
-    const sig = req.headers.get('stripe-signature')!;
+    const buf = await req.text()
+    const sig = req.headers.get('stripe-signature')!
 
-    let event: Stripe.Event;
+    let event: Stripe.Event
 
     try {
       event = stripeServer.webhooks.constructEvent(
         buf,
         sig,
         env.STRIPE_WEBHOOK_SECRET_KEY
-      );
+      )
     } catch (err) {
       return NextResponse.json(
         {
@@ -26,10 +26,10 @@ const webhookHandler = async (req: NextRequest) => {
           },
         },
         { status: 400 }
-      );
+      )
     }
 
-    const subscription = event.data.object as Stripe.Subscription;
+    const subscription = event.data.object as Stripe.Subscription
 
     switch (event.type) {
       case 'customer.subscription.created':
@@ -40,12 +40,12 @@ const webhookHandler = async (req: NextRequest) => {
           data: {
             isActive: true,
           },
-        });
-        break;
+        })
+        break
       default:
-        break;
+        break
     }
-    return NextResponse.json({ received: true });
+    return NextResponse.json({ received: true })
   } catch {
     return NextResponse.json(
       {
@@ -54,8 +54,8 @@ const webhookHandler = async (req: NextRequest) => {
         },
       },
       { status: 405 }
-    ).headers.set('Allow', 'POST');
+    ).headers.set('Allow', 'POST')
   }
-};
+}
 
-export { webhookHandler as POST };
+export { webhookHandler as POST }

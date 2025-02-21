@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui/button'
 
 export const Footer = () => {
   return (
@@ -8,5 +8,5 @@ export const Footer = () => {
         <a href="https://michalskolak.vercel.app/">Michał Skolak</a>
       </Button>
     </footer>
-  );
-};
+  )
+}

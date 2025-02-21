@@ -1,7 +1,7 @@
-import { HeroForm } from '@/components/form';
-import { Icons } from '@/components/icons';
-import { Button } from '@/components/ui/button';
-import * as m from '@/paraglide/messages';
+import { HeroForm } from '@/components/form'
+import { Icons } from '@/components/icons'
+import { Button } from '@/components/ui/button'
+import * as m from '@/paraglide/messages'
 
 const Home = () => {
   return (
@@ -31,7 +31,7 @@ const Home = () => {
         </Button>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

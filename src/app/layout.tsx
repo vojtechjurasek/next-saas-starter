@@ -1,18 +1,18 @@
-import '@/styles/globals.css';
+import '@/styles/globals.css'
 
-import { PropsWithChildren } from 'react';
-import { LanguageProvider } from '@inlang/paraglide-next';
-import type { Metadata } from 'next';
+import { PropsWithChildren } from 'react'
+import { LanguageProvider } from '@inlang/paraglide-next'
+import type { Metadata } from 'next'
 
-import { Footer } from '@/components/footer';
-import { Navbar } from '@/components/navbar/navbar';
-import { ThemeProvider } from '@/components/theme-provider';
-import { ThemeSwitcher } from '@/components/theme-switcher';
-import { Toaster } from '@/components/ui/toaster';
-import { siteConfig } from '@/lib/constant';
-import { fonts } from '@/lib/fonts';
-import { cn } from '@/lib/utils';
-import { languageTag } from '@/paraglide/runtime.js';
+import { Footer } from '@/components/footer'
+import { Navbar } from '@/components/navbar/navbar'
+import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeSwitcher } from '@/components/theme-switcher'
+import { Toaster } from '@/components/ui/toaster'
+import { siteConfig } from '@/lib/constant'
+import { fonts } from '@/lib/fonts'
+import { cn } from '@/lib/utils'
+import { languageTag } from '@/paraglide/runtime.js'
 
 export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteConfig.url()),
@@ -46,7 +46,7 @@ export const generateMetadata = (): Metadata => ({
     description: siteConfig.description(),
     images: '/opengraph-image.png',
   },
-});
+})
 
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
@@ -63,7 +63,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         </body>
       </html>
     </LanguageProvider>
-  );
-};
+  )
+}
 
-export default RootLayout;
+export default RootLayout

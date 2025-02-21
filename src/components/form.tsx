@@ -1,22 +1,22 @@
-'use client';
+'use client'
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 
-import { helloAction } from '@/actions/hello-action';
-import { Button } from '@/components/ui/button';
-import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { useToast } from '@/components/ui/use-toast';
-import { cn } from '@/lib/utils';
-import * as m from '@/paraglide/messages';
+import { helloAction } from '@/actions/hello-action'
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
+import { useToast } from '@/components/ui/use-toast'
+import { cn } from '@/lib/utils'
+import * as m from '@/paraglide/messages'
 
 const formSchema = z.object({
   name: z.string().min(3),
-});
+})
 
-type FormSchema = z.infer<typeof formSchema>;
+type FormSchema = z.infer<typeof formSchema>
 
 export const HeroForm = () => {
   const form = useForm<FormSchema>({
@@ -24,14 +24,14 @@ export const HeroForm = () => {
     defaultValues: {
       name: '',
     },
-  });
-  const { toast } = useToast();
+  })
+  const { toast } = useToast()
 
   const onSubmit = async ({ name }: FormSchema) => {
-    const { message } = await helloAction(name);
+    const { message } = await helloAction(name)
 
-    toast({ description: message });
-  };
+    toast({ description: message })
+  }
 
   return (
     <Form {...form}>
@@ -59,5 +59,5 @@ export const HeroForm = () => {
         </Button>
       </form>
     </Form>
-  );
-};
+  )
+}

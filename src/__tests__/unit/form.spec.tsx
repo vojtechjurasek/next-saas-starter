@@ -1,16 +1,16 @@
-import { screen } from '@testing-library/dom';
-import { render } from '@testing-library/react';
+import { screen } from '@testing-library/dom'
+import { render } from '@testing-library/react'
 
-import { HeroForm } from '@/components/form';
+import { HeroForm } from '@/components/form'
 
 describe('Form', () => {
   it('renders the Components', () => {
-    render(<HeroForm />);
+    render(<HeroForm />)
 
     const button = screen.getByText('Submit', {
       selector: 'button',
-    });
+    })
 
-    expect(button).toBeInTheDocument();
-  });
-});
+    expect(button).toBeInTheDocument()
+  })
+})

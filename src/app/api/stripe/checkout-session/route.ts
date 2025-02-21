@@ -1,11 +1,11 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
-import { auth } from '@/app/api/auth/[...nextauth]/auth-options';
-import { env } from '@/env.mjs';
-import { stripeServer } from '@/lib/stripe';
+import { auth } from '@/app/api/auth/[...nextauth]/auth-options'
+import { env } from '@/env.mjs'
+import { stripeServer } from '@/lib/stripe'
 
 export const GET = async () => {
-  const session = await auth();
+  const session = await auth()
 
   if (!session?.user) {
     return NextResponse.json(
@@ -16,7 +16,7 @@ export const GET = async () => {
         },
       },
       { status: 401 }
-    );
+    )
   }
 
   const checkoutSession = await stripeServer.checkout.sessions.create({
@@ -30,7 +30,7 @@ export const GET = async () => {
     ],
     success_url: `${env.APP_URL}?session_id={CHECKOUT_SESSION_ID}`,
     cancel_url: env.APP_URL,
-  });
+  })
 
-  return NextResponse.json({ session: checkoutSession }, { status: 200 });
-};
+  return NextResponse.json({ session: checkoutSession }, { status: 200 })
+}
