@@ -19,6 +19,7 @@ export default [
       'node_modules/**',
       '.next/**',
       'dist/**',
+      'src/paraglide/**',
     ],
     languageOptions: {
       parser: tseslintParser,

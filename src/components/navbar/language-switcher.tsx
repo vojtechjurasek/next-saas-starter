@@ -8,15 +8,11 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { usePathname, useRouter } from '@/lib/i18n'
-import {
-  AvailableLanguageTag,
-  availableLanguageTags,
-  languageTag,
-} from '@/paraglide/runtime'
+import { getLocale, Locale, locales } from '@/paraglide/runtime'
 
-const LanguageLabel: Record<AvailableLanguageTag, string> = {
+const LanguageLabel: Record<Locale, string> = {
   en: 'English',
-  pl: 'Polski',
+  cs: 'Čeština',
 }
 
 export const LanguageSwitcher = () => {
@@ -27,11 +23,11 @@ export const LanguageSwitcher = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="secondary" size="icon">
-          {languageTag().toUpperCase()}
+          {getLocale().toUpperCase()}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {availableLanguageTags.map((locale) => (
+        {locales.map((locale) => (
           <DropdownMenuItem
             key={locale}
             onClick={() => {

@@ -12,7 +12,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { siteConfig } from '@/lib/constant'
 import { fonts } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
-import { languageTag } from '@/paraglide/runtime.js'
+import { getLocale } from '@/paraglide/runtime.js'
 
 export const generateMetadata = (): Metadata => ({
   metadataBase: new URL(siteConfig.url()),
@@ -38,7 +38,7 @@ export const generateMetadata = (): Metadata => ({
     siteName: siteConfig.title(),
     images: '/opengraph-image.png',
     type: 'website',
-    locale: languageTag(),
+    locale: getLocale(),
   },
   twitter: {
     card: 'summary_large_image',
@@ -51,7 +51,7 @@ export const generateMetadata = (): Metadata => ({
 const RootLayout = ({ children }: PropsWithChildren) => {
   return (
     <LanguageProvider>
-      <html lang={languageTag()} suppressHydrationWarning>
+      <html lang={getLocale()} suppressHydrationWarning>
         <body className={cn('min-h-screen font-sans', fonts)}>
           <ThemeProvider attribute="class">
             <Navbar />

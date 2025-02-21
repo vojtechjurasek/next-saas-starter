@@ -1,8 +1,8 @@
 import { Middleware, Navigation, PrefixStrategy } from '@inlang/paraglide-next'
 
-import type { AvailableLanguageTag } from '@/paraglide/runtime'
+import type { Locale } from '@/paraglide/runtime'
 
-const strategy = PrefixStrategy<AvailableLanguageTag>({
+const strategy = PrefixStrategy<Locale>({
   prefixDefault: 'never',
 
   // don't generate alternate routes for the api
