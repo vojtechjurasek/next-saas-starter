@@ -58,9 +58,9 @@ export const generateMetadata = (): Metadata => ({
   },
 })
 
-const RootLayout = async ({ children }: PropsWithChildren) => {
-  // @ts-expect-error - headers must be sync
-  // https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658
+const RootLayout = ({ children }: PropsWithChildren) => {
+  // @next-codemod-ignore
+  // @ts-expect-error - headers must be sync https://github.com/opral/inlang-paraglide-js/issues/245#issuecomment-2608727658
   ssrLocale().locale = headers().get('x-paraglide-locale') as Locale
 
   return (
