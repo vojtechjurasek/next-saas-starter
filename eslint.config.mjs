@@ -2,7 +2,7 @@ import tseslint from '@typescript-eslint/eslint-plugin'
 import tseslintParser from '@typescript-eslint/parser'
 import nextPlugin from '@next/eslint-plugin-next'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
-import tailwindcss from 'eslint-plugin-tailwindcss'
+// import tailwindcss from 'eslint-plugin-tailwindcss'
 import jsx_a11y from 'eslint-plugin-jsx-a11y'
 import reactPlugin from 'eslint-plugin-react'
 import globals from 'globals'
@@ -41,14 +41,14 @@ export default [
       react: reactPlugin,
       next: nextPlugin,
       'simple-import-sort': simpleImportSort,
-      tailwindcss: tailwindcss,
+      // tailwindcss: tailwindcss,
       prettier: prettier,
       'jsx-a11y': jsx_a11y,
     },
     rules: {
       'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'sort-imports': 'off',
-      'tailwindcss/no-custom-classname': 'off',
+      // 'tailwindcss/no-custom-classname': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-require-imports': 'off',
       'simple-import-sort/imports': [
@@ -78,12 +78,12 @@ export default [
       'react/prop-types': 'off',
       'react/jsx-uses-react': 'off',
     },
-    settings: {
-      tailwindcss: {
-        callees: ['cn'],
-        config: 'tailwind.config.js',
-      },
-    },
+    // settings: {
+    //   tailwindcss: {
+    //     callees: ['cn'],
+    //     config: 'tailwind.config.js',
+    //   },
+    // },
   },
   prettierConfig,
 ]
