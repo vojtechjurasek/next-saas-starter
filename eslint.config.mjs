@@ -8,8 +8,19 @@ import reactPlugin from 'eslint-plugin-react'
 import globals from 'globals'
 import prettierConfig from 'eslint-config-prettier'
 import prettier from 'eslint-plugin-prettier'
+import js from '@eslint/js'
+import { FlatCompat } from '@eslint/eslintrc'
 
-export default [
+const compat = new FlatCompat({
+  // import.meta.dirname is available after Node.js v20.11.0
+  baseDirectory: import.meta.dirname,
+  recommendedConfig: js.configs.recommended,
+})
+
+const eslintConfig = [
+  // ...compat.config({
+  //   extends: ['next'],
+  // }),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: [
@@ -48,7 +59,7 @@ export default [
     rules: {
       'prettier/prettier': ['error', { endOfLine: 'auto' }],
       'sort-imports': 'off',
-      // 'tailwindcss/no-custom-classname': 'off',
+      'tailwindcss/no-custom-classname': 'off',
       '@typescript-eslint/no-var-requires': 'off',
       '@typescript-eslint/no-require-imports': 'off',
       'simple-import-sort/imports': [
@@ -87,3 +98,5 @@ export default [
   },
   prettierConfig,
 ]
+
+export default eslintConfig

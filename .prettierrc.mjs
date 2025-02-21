@@ -5,6 +5,6 @@ export default {
   jsxSingleQuote: false,
   trailingComma: 'es5',
   tabWidth: 2,
-  // plugins: ['prettier-plugin-tailwindcss'],
-  tailwindStylesheet: "./src/styles/globals.css"
+  plugins: ['prettier-plugin-tailwindcss'],
+  tailwindStylesheet: './src/styles/globals.css',
 }

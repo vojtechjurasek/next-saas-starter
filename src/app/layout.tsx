@@ -69,7 +69,7 @@ const RootLayout = ({ children }: PropsWithChildren) => {
         <ThemeProvider attribute="class">
           <Navbar />
           {children}
-          <ThemeSwitcher className="bottom-5 absolute right-5 z-10" />
+          <ThemeSwitcher className="absolute right-5 bottom-5 z-10" />
           <Footer />
           <Toaster />
         </ThemeProvider>
