@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import { paraglideWebpackPlugin } from '@inlang/paraglide-js'
+import { NextConfig } from 'next'
+
+const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
@@ -9,16 +11,22 @@ const nextConfig = {
     ],
   },
   webpack: (config, { isServer }) => {
+    config.plugins.push(
+      paraglideWebpackPlugin({
+        outdir: './src/paraglide',
+        project: './project.inlang',
+      })
+    )
+
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         async_hooks: false,
       }
     }
+
     return config
   },
 }
 
-module.exports = {
-  ...nextConfig,
-}
+export default nextConfig
