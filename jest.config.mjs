@@ -2,8 +2,8 @@ const config = {
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.jsx?$': 'babel-jest', // Add this line to handle ES modules
+    // '^.+\\.tsx?$': 'ts-jest',
+    // '^.+\\.jsx?$': 'babel-jest', // Add this line to handle ES modules
   },
   testPathIgnorePatterns: [
     '<rootDir>/.next/',
