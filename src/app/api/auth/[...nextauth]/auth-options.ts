@@ -11,8 +11,8 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GitHubProvider({
-      clientId: env.GITHUB_ID,
-      clientSecret: env.GITHUB_SECRET,
+      clientId: env.BETTER_AUTH_GITHUB_ID,
+      clientSecret: env.BETTER_AUTH_GITHUB_SECRET,
     }),
   ],
   callbacks: {
