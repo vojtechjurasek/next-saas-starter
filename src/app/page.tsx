@@ -1,7 +1,7 @@
 import { HeroForm } from '@/components/form'
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import * as m from '@/paraglide/messages'
+import { m } from '@/paraglide/messages'
 
 const Home = () => {
   return (

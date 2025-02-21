@@ -17,7 +17,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { env } from '@/env.mjs'
-import * as m from '@/paraglide/messages'
+import { m } from '@/paraglide/messages'
 
 export const UserDropdown = ({ session: { user } }: { session: Session }) => {
   const [isPending, setIsPending] = useState(false)

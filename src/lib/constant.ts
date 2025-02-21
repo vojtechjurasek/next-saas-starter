@@ -1,5 +1,5 @@
 import { env } from '@/env.mjs'
-import * as m from '@/paraglide/messages'
+import { m } from '@/paraglide/messages'
 
 export const siteConfig = {
   title: m.meta_title,

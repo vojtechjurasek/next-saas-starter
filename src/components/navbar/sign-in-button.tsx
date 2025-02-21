@@ -5,7 +5,7 @@ import { signIn } from 'next-auth/react'
 
 import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import * as m from '@/paraglide/messages'
+import { m } from '@/paraglide/messages'
 
 export const SignInButton = () => {
   const [isPending, startTransition] = useTransition()

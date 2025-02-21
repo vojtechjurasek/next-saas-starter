@@ -5,7 +5,7 @@ import { LanguageSwitcher } from './language-switcher'
 import { auth } from '@/app/api/auth/[...nextauth]/auth-options'
 import { SignInButton } from '@/components/navbar/sign-in-button'
 import { UserDropdown } from '@/components/navbar/user-dropdown'
-import * as m from '@/paraglide/messages'
+import { m } from '@/paraglide/messages'
 import { localizeHref } from '@/paraglide/runtime'
 
 export const Navbar = async () => {
